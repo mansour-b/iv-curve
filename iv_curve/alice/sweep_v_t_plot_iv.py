@@ -41,7 +41,14 @@ def plot_iv_curve(ax, temperature, voltages, currents):
     plot_y_limits = [min_c - 0.1 * amp_c, max_c + 0.1 * amp_c]
 
     # Plot the measurements
-    ax.errorbar(voltages, currents, xerr=0.1 * np.ones(len(voltages)), yerr=5e-4 * np.ones(len(currents)), fmt="-o", label=f"T = {temperature:.0f} K, R = {resistance:.0f} Ohm")
+    ax.errorbar(
+        voltages,
+        currents,
+        xerr=0.1 * np.ones(len(voltages)),
+        yerr=5e-4 * np.ones(len(currents)),
+        fmt="-o",
+        label=f"T = {temperature:.0f} K, R = {resistance:.0f} Ohm",
+    )
 
     # Configure display
     ax.set_title("I-C curve of the thermistor")

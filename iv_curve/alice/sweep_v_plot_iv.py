@@ -49,14 +49,32 @@ amp_c = max_c - min_c
 plot_y_limits = [min_c - 0.1 * amp_c, max_c + 0.1 * amp_c]
 
 # Plot the measurements
-plt.errorbar(voltages, currents, xerr=0.1 * np.ones(len(voltages)), yerr=5e-4 * np.ones(len(currents)), fmt="o")
+plt.errorbar(
+    voltages,
+    currents,
+    xerr=0.1 * np.ones(len(voltages)),
+    yerr=5e-4 * np.ones(len(currents)),
+    fmt="o",
+)
 
 # Plot the regression
 plt.plot(abscissa, (abscissa - bias) / resistance, zorder=0)
-plt.fill_between(abscissa, y1=(abscissa - bias + bias_std) / (resistance - resistance_std), y2=(abscissa - bias - bias_std) / (resistance + resistance_std), zorder=0, alpha=0.5, color="tab:orange")
+plt.fill_between(
+    abscissa,
+    y1=(abscissa - bias + bias_std) / (resistance - resistance_std),
+    y2=(abscissa - bias - bias_std) / (resistance + resistance_std),
+    zorder=0,
+    alpha=0.5,
+    color="tab:orange",
+)
 
 # Configure display
-plt.title(f"I-C curve of the resistor (R = {resistance_value_str} +/- {error_bar_str} x 10^{resistance_magnitude_str})")
+plt.title(
+    f"I-C curve of the resistor "
+    f"(R = {resistance_value_str} "
+    f"+/- {error_bar_str} "
+    f"x 10^{resistance_magnitude_str})"
+)
 plt.xlabel("Voltage (V)")
 plt.ylabel("Current (A)")
 plt.xlim(plot_x_limits)
