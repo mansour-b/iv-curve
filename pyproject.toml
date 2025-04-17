@@ -22,9 +22,11 @@ classifiers = [
 ]
 
 dependencies = [
-    "matplotlib",
-    "numpy",
-    "ruff",
+  "ipykernel",
+  "matplotlib",
+  "numpy",
+  "ruff",
+  "scipy",
 ]
 
 requires-python = ">=3.8"
