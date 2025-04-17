@@ -1,8 +1,11 @@
+import time
 from argparse import ArgumentParser
 
 import numpy as np
 from electronic_circuits.circuits import MeasuringCircuit
 from electronic_circuits.components import Diode, Resistor
+
+from iv_curve.storage import IV_CURVE_PATH
 
 circuit_configuration_dict = {
     "resistor": {
@@ -64,4 +67,7 @@ if __name__ == "__main__":
 
     # Save results
     output_array = np.concatenate(results, axis=-1)
-    print(output_array)
+
+    timestamp = time.strftime("%y%m%d_%H%M%S")
+    output_path = IV_CURVE_PATH / f"sweep_{args.component}_{timestamp}.txt"
+    np.savetxt(output_path, output_array)
