@@ -1,14 +1,16 @@
+from argparse import ArgumentParser
+
 import numpy as np
 from electronic_circuits.circuits import MeasuringCircuit
 from electronic_circuits.components import Diode, Resistor
 
 circuit_configuration_dict = {
     "resistor": {
-        "component": Resistor,
+        "component": Resistor(),
         "sweeps": [{"start_v": -5, "stop_v": 5, "num_points": 11}],
     },
     "diode": {
-        "component": Diode,
+        "component": Diode(),
         "sweeps": [
             {"start_v": 0, "stop_v": 1, "num_points": 100},
             {"start_v": -1, "stop_v": -5, "num_points": 5},
@@ -36,9 +38,15 @@ def sweep_voltage(
 
 
 if __name__ == "__main__":
+    # Parse arguments
+    parser = ArgumentParser()
+    parser.add_argument(
+        "--component", type=str, choices=set(circuit_configuration_dict)
+    )
+    args = parser.parse_args()
+
     # Configure the circuit
-    mode = "resistor"
-    config = circuit_configuration_dict[mode]
+    config = circuit_configuration_dict[args.component]
 
     component = config["component"]
     circuit = MeasuringCircuit(component)
@@ -56,3 +64,4 @@ if __name__ == "__main__":
 
     # Save results
     output_array = np.concatenate(results, axis=-1)
+    print(output_array)
