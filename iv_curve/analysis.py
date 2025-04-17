@@ -4,11 +4,7 @@ from pathlib import Path
 import numpy as np
 from scipy.stats import linregress
 
-from iv_curve.storage import IV_CURVE_PATH
-
-
-def timestamp(path: Path) -> str:
-    return "_".join(path.stem.split("_")[-2:])
+from iv_curve.storage import IV_CURVE_PATH, timestamp
 
 
 def measure_resistance(voltages: np.array, currents: np.array) -> float:
