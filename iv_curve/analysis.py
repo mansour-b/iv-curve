@@ -7,7 +7,7 @@ from scipy.stats import linregress
 from iv_curve.storage import IV_CURVE_PATH
 
 
-def timestamp(path: Path):
+def timestamp(path: Path) -> str:
     return "_".join(path.stem.split("_")[-2:])
 
 
