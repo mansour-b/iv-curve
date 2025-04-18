@@ -6,6 +6,7 @@ component = Diode()
 # component = ZenerDiode()
 # component = TunnelDiode()
 # component = SchottkyDiode()
+# component = LED()
 circuit = MeasuringCircuit(component)
 
 generator = circuit.generator
