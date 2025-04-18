@@ -3,6 +3,7 @@ from electronic_circuits.circuits import MeasuringCircuit
 from electronic_circuits.components import Diode
 
 component = Diode()
+# component = ZenerDiode()
 circuit = MeasuringCircuit(component)
 
 generator = circuit.generator
