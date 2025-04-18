@@ -5,6 +5,7 @@ from electronic_circuits.components import Diode
 component = Diode()
 # component = ZenerDiode()
 # component = TunnelDiode()
+# component = SchottkyDiode()
 circuit = MeasuringCircuit(component)
 
 generator = circuit.generator
